@@ -4,6 +4,7 @@ import { uuid as uuidv4 } from 'uuidv4';
 @Injectable()
 export class BooksService {
   private books: any = [];
+
   getAllBooks(): any[] {
     return this.books;
   }
@@ -18,8 +19,13 @@ export class BooksService {
   }
 
   findBookById(id: string) {
-    return this.books.filter((book) =>
-      book.id === id ? [book] : 'id not found',
-    );
+    return this.books.filter((book) => book.id === id);
+  }
+
+  updateBook(id: string, title: string, author: string, category: string) {
+    let book = this.books.filter((book) => book.id === id);
+    (book[0].title = title),
+      (book[0].author = author),
+      (book[0].category = category);
   }
 }

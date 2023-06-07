@@ -1,5 +1,17 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { BooksService } from './books.service';
+import { createBookDto } from './DataTransferObject/create-book.dto';
+import { updateBookDto } from './DataTransferObject/update-book.dto';
 
 @Controller('books')
 export class BooksController {
@@ -18,19 +30,15 @@ export class BooksController {
   }
 
   @Post('/create')
-  createBook(@Body() data: any) {
-    this.BooksService.createBook(data.title, data.author, data.category);
+  @UsePipes(ValidationPipe)
+  createBook(@Body() payload: createBookDto) {
+    this.BooksService.createBook(payload);
     return 'create success';
   }
 
   @Put(':id')
-  updateBookById(
-    @Param('id') id: string,
-    @Body('title') title: string,
-    @Body('author') author: string,
-    @Body('category') category: string,
-  ) {
-    this.BooksService.updateBook(id, title, author, category);
+  updateBookById(@Param('id') id: string, @Body() payload: updateBookDto) {
+    this.BooksService.updateBook(id, payload);
     return 'Book Updated';
   }
 }

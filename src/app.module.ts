@@ -1,10 +1,18 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { BooksModule } from './books/books.module';
-import { typeOrmConfig } from './config/typeorm.config';
-import { DbModule } from './db/db.module';
+import { DbModule } from '../db/db.module';
+import { ConfigModule } from '@nestjs/config';
+import { AppConfig, DatabaseConfig } from './config';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), BooksModule, DbModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      cache: true,
+      load: [AppConfig, DatabaseConfig],
+    }),
+    BooksModule,
+    DbModule,
+  ],
 })
 export class AppModule {}

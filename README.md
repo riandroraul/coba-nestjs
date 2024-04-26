@@ -26,7 +26,7 @@
 
 ## Description
 
-A brief description of your project, highlighting its purpose and key features.
+in this project i learned about nest js and implemented migration with typeOrm. Maybe I will learn a lot about NestJS in the future in this project
 
 ## Getting Started
 

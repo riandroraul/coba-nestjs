@@ -13,7 +13,7 @@ const datasourceOption: DataSourceOptions = {
   password: configService.get<string>('DB_PASS'),
   database: configService.get<string>('DB_NAME'),
   entities: [`${__dirname}/../**/*.entity{.ts,.js}`],
-  synchronize: configService.get<boolean>('DB_SYNC'),
+  // synchronize: configService.get<boolean>('DB_SYNC'),
   logging: configService.get<boolean>('NODE_ENV'),
   migrations: [`${__dirname}/../db/migrations/*{.ts,.js}`],
   migrationsTableName: 'typeorm_migration',

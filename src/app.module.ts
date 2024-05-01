@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { BooksModule } from './books/books.module';
-import { DbModule } from '../db/db.module';
+import { DbModule } from './modules/db/db.module';
 import { ConfigModule } from '@nestjs/config';
 import { AppConfig, DatabaseConfig } from './config';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -11,8 +11,8 @@ import { AppConfig, DatabaseConfig } from './config';
       cache: true,
       load: [AppConfig, DatabaseConfig],
     }),
-    BooksModule,
     DbModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

@@ -72,3 +72,12 @@ DB_PASS=
 DB_NAME=dbname
 DB_SYNC=true
 ```
+
+### Setting Up database migration
+
+```bash
+
+npm run migration:generate --name=migrationName
+
+npm run migration:run
+```

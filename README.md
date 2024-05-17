@@ -42,13 +42,13 @@ Before you begin, make sure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/yourproject.git
+   git clone https://github.com/riandroraul/coba-nestjs
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd yourproject
+   cd coba-nestjs
    ```
 
 3. Install dependencies:
